@@ -1,0 +1,69 @@
+// Place all the styles related to the landing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-color: #f2f2f2;
+$text-icon-color: #212121;
+$text-yellow: #f9a825;
+$background-blue: #0277bd;
+
+.cover-container {
+    position: relative;
+	width: 100%;
+	height: calc(100vh - 64px);
+}
+
+.cover-text-container {
+	position: absolute;
+	bottom: 1%;
+    left: 15%;
+}
+
+.landing-phrase {
+  position: relative;
+  bottom: 0;
+}
+
+.landing-phrase > h1 {
+    font-weight: 400;
+    color: $text-yellow;
+}
+
+.landing-phrase > h1 > strong {
+    font-weight: 200;
+    color: $text-yellow;
+}
+
+.landing-phrase > h1.phrase {
+    font-weight: 400;
+    color: white;
+}
+
+
+
+
+
+// .cover-img {
+//    filter: blur(5px);
+//    width: 100%;
+//    position: absolute;
+//    bottom: 0;
+// }
+//
+// // Having renaming issues
+// .content-img-text {
+// 	position: absolute;
+// 	width: auto;
+//     bottom: 85px;
+// }
+//
+// h1.content-img-text:last-child {
+// 	position: absolute;
+// 	width: auto;
+//     bottom: 85px;
+//     font-weight: 400;
+//     color: white;
+//     bottom: 5px;
+//     font-size: 50px;
+//     font-weight: 300;
+// }

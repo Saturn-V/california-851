@@ -1,0 +1,239 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require normalize
+ *= require skeleton
+ */
+
+ @import "font-awesome";
+
+$primary-color: #f2f2f2;
+$text-icon-color: #212121;
+$text-yellow: #f9a825;
+$text-off-white: #f2f2f2;
+$background-blue: #0277bd;
+
+body {
+  min-height: 100vh;
+	width: 100%;
+  font-size: 20px;
+  background-image: url("../assets/cover.jpg"); // Setting background splash image
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: $text-yellow;
+    opacity: 0.9;
+}
+
+// Application template styles
+.page-content {
+    position: relative;
+    overflow: hidden;
+    width: 100%; // Page content is screen width
+    height: 100vh; // Page content is screen height
+    background-image: url("../assets/cover.jpg"); // Setting background splash image
+    background-position: bottom;
+    background-size: cover;
+}
+
+
+// _header classes
+.logo {
+    position: absolute;
+    left: 2%;
+    font-weight: 200;
+    font-size: 1.5em;
+}
+
+.logo-851 {
+    font-weight: 400;
+    color: $text-off-white;
+    opacity: 1;
+}
+
+.logo-california {
+    font-weight: 200;
+    color: $text-off-white;
+}
+
+.login {
+    font-size: 1.5em;
+    font-weight: 300;
+    right: 2%;
+    color: $text-off-white;
+}
+
+.footer-social {
+    font-size: 40px;
+    padding-top: 1%;
+}
+
+.fa-facebook-official {
+    padding-right: 4%;
+    color: $primary-color;
+}
+
+.fa-twitter {
+    padding-right: 4%;
+    color: $primary-color;
+}
+
+.fa-instagram {
+    color: $primary-color;
+}
+
+.footer-mail-to {
+    color: $primary-color;
+    font-weight: 200;
+    font-size: 25px;
+    padding-bottom: 1%;
+}
+
+.footer-desc {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+footer {
+	position: relative;
+    width: 100%;
+    color: $text-off-white;
+    background-color: $text-yellow;
+}
+
+
+
+
+// Mobile Phone optimization
+@media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: portrait) {
+
+}
+
+// Tablet optimization
+@media only screen and (min-width: 768px) and (max-width: 1600px) {
+
+}
+
+
+
+
+
+
+
+
+// .green-done {
+// 	color: #4caf50;
+// }
+//
+// .white-done {
+// 	color: #ffffff;
+// }
+//
+//
+// .dark-primary {
+// 	background-color: #FBC02D;
+// }
+//
+// .dark-primary-text {
+// 	color: #FBC02D;
+// }
+//
+// .primary {
+// 	background-color: #FFE100;
+// }
+//
+// .primary-text {
+// 	color: #FFEB3B;
+// }
+//
+// .light-primary {
+// 	background-color: #FFF9C4;
+// }
+//
+// .text-icon-color {
+// 	color: #212121;
+// }
+//
+// .accent-color {
+// 	background-color: #6495ED;
+// }
+//
+// .accent-color-text {
+// 	color: #6495ED;
+// }
+//
+// .secondary-text {
+// 	color: #727272;
+// }
+//
+// .divider-color {
+// 	background-color: #B6B6B6;
+// }
+//
+// .off-white {
+// 	background-color: #f2f2f2;
+// }
+//
+// .blue-dark {
+// 	background-color: #264d73;
+// }
+//
+// .yellow-dark {
+// 	background-color: #f9a825 !important;
+// }
+//
+// .yellow-dark-text {
+// 	color: #f9a825;
+// }
+//
+// .content-outer {
+// 	position: absolute;
+// 	clear: both;
+// }
+//
+// .content-inner {
+// 	position: relative;
+// 	clear: both;
+// 	padding-top: 30px;
+// 	padding-bottom: 175px;
+// }
+//
+// .blur {
+// 	filter: blur(5px);
+// 	-webkit-filter: blur(5px);
+// 	-moz-filter: blur(5px);
+// 	-o-filter: blur(5px);
+// 	-ms-filter: blur(5px);
+// }
+//
+// .off-white-to-blue {
+// 	background: linear-gradient(#f2f2f2 ,#0d47a1);
+// }
+//
+// .opacity {
+// 	opacity: .4;
+// }
+//
+// //footer details
+//
+// main {
+// 	flex: 1 0 auto;
+// }
