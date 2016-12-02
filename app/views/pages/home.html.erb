@@ -1,0 +1,20 @@
+<div class="row home">
+
+    <div class="six columns">
+      <h1>Issues</h1>
+      <%= link_to "Create Issue", new_issue_path, :class => 'button button-primary' %>
+
+      <% @issues.each do |issue| %>
+      <div class="row">
+        <div class="twelve columns">
+          <h3><%= link_to issue.title, issue %></h3>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="six columns">
+      <h1>Announcements</h1>
+    </div>
+
+</div>

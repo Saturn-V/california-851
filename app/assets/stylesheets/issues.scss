@@ -1,0 +1,23 @@
+// Place all the styles related to the issues controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-color-hex: #f2f2f2;
+$primary-color-rgba: rgba(242, 242, 242, .75);
+$text-icon-color: #212121;
+$text-yellow: #f9a825;
+$background-blue: #0277bd;
+
+div.home > * {
+  background-color: $primary-color-rgba;
+  margin-top: 4%;
+  padding: 4%;
+  border-radius: 6px;
+  color: $text-icon-color;
+}
+
+div.home div:first-child {
+
+}
+
+div.home div:last-child {}

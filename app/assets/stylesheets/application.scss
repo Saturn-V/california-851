@@ -16,14 +16,20 @@
  *= require skeleton
  */
 
+ /* Imports
+ –––––––––––––––––––––––––––––––––––––––––––––––––– */
  @import "font-awesome";
 
+ /* SCSS Variables
+ –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $primary-color: #f2f2f2;
 $text-icon-color: #212121;
 $text-yellow: #f9a825;
 $text-off-white: #f2f2f2;
 $background-blue: #0277bd;
 
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 body {
   min-height: 100vh;
 	width: 100%;
@@ -34,52 +40,64 @@ body {
   background-repeat: no-repeat;
 }
 
+a {
+  text-decoration: none;
+}
+
+.container {
+  color: $text-off-white;
+}
+
+/* Nav Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .nav {
     position: relative;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    padding: 1% 0;
     background-color: $text-yellow;
-    opacity: 0.9;
 }
+
+div.nav a { text-decoration: none; }
+
+div.nav .logo {
+  position: relative;
+  // font-weight: 400;
+  font-size: 1.5em;
+  color: $text-off-white;
+}
+
+div.nav .logo-california {
+  // font-weight: 100;
+  color: $text-off-white;
+}
+
+div.nav .login {
+  position: relative;
+  right: 0;
+  font-size: 1.5em;
+  color: $text-off-white;
+  // font-weight: 300;
+}
+
 
 // Application template styles
-.page-content {
-    position: relative;
-    overflow: hidden;
-    width: 100%; // Page content is screen width
-    height: 100vh; // Page content is screen height
-    background-image: url("../assets/cover.jpg"); // Setting background splash image
-    background-position: bottom;
-    background-size: cover;
-}
+// .page-content {
+//     position: relative;
+//     overflow: hidden;
+//     width: 100%; // Page content is screen width
+//     height: 100vh; // Page content is screen height
+//     background-image: url("../assets/cover.jpg"); // Setting background splash image
+//     background-position: bottom;
+//     background-size: cover;
+// }
 
 
-// _header classes
-.logo {
-    position: absolute;
-    left: 2%;
-    font-weight: 200;
-    font-size: 1.5em;
-}
 
-.logo-851 {
-    font-weight: 400;
-    color: $text-off-white;
-    opacity: 1;
-}
 
-.logo-california {
-    font-weight: 200;
-    color: $text-off-white;
-}
 
-.login {
-    font-size: 1.5em;
-    font-weight: 300;
-    right: 2%;
-    color: $text-off-white;
-}
 
 .footer-social {
     font-size: 40px;
