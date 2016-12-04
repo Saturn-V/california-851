@@ -1,0 +1,14 @@
+<h1>Edit Issue</h1>
+
+<h3>
+  <strong>Issue Title:</strong>
+  <%= @issue.title %>
+</h3>
+
+<%= form_for(@issue) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title, :class => 'u-full-width' %>
+<%= f.label :description %>
+<%= f.text_field :description, :class => 'u-full-width' %>
+<%= f.submit 'Update', :class => 'button-primary' %>
+<% end %>

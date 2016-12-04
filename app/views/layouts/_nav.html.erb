@@ -4,9 +4,15 @@
 
     <%= link_to '851 California', root_path, :class => 'logo' %>
 
-    <!-- <a href="/login" class="login">
-      Log In
-    </a> -->
+    <% if !user_signed_in? %>
+    <%= link_to 'Log In', new_user_session_path %>
+    <% end %>
+
+    <% if user_signed_in? %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+    <%= current_user.first_name %>
+    <% end %>
+
 
   </div>
 </div>

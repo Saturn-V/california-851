@@ -1,2 +1,6 @@
-<h1>Announcements#new</h1>
-<p>Find me in app/views/announcements/new.html.erb</p>
+<h1>Create an Announcement</h1>
+<%= form_for(@announcement) do |f| %>
+<%= f.label :body %>
+<%= f.text_field :body, :class => 'u-full-width' %>
+<%= f.submit 'Create', :class => 'button-primary' %> 
+<% end %>

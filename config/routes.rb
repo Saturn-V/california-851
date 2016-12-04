@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
 
-  # root 'pages#landing'
-  root 'pages#home'
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  authenticated :user do
+    root 'pages#home', as: :authenticated_root
+  end
+
+  root 'pages#landing'
 
   resources :pages, only: [:landing, :home]
 
-  resources :issues, only: [:show, :new, :create]
+  resources :issues, only: [:show, :new, :create, :edit, :update]
 
-  # get 'home', to: 'home#index'
-  # get 'home', to: 'issues#index'
-  # get 'home', to: 'announcements#index'
-  #
-  # get 'home/issue/:id', to: 'issues#show', as: 'show_issue'
-  # get 'home/issues/new', to: 'issues#new', as: 'issues'
-  # get 'home/issues/new', to: 'issues#new', as: 'new_issue'
-  # post 'home', to: 'issues#create'
+  resources :announcements, only: [:new, :create, :edit, :update]
 
 end

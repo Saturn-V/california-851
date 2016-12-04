@@ -7,7 +7,11 @@
       <% @issues.each do |issue| %>
       <div class="row">
         <div class="twelve columns">
+          <h6><%= issue.user.first_name %></h6>
           <h3><%= link_to issue.title, issue %></h3>
+          <% if current_user.try(:admin?) || current_user == issue.user %>
+          <%= link_to 'Edit', edit_issue_path(issue) %>
+          <% end %>
         </div>
       </div>
       <% end %>
@@ -15,6 +19,21 @@
 
     <div class="six columns">
       <h1>Announcements</h1>
+
+      <% if current_user.try(:admin?) %>
+      <%= link_to "Create Announcement", new_announcement_path, :class => 'button button-primary' %>
+      <% end %>
+
+      <% @announcements.each do |announcement| %>
+      <div class="row">
+        <div class="twelve columns">
+          <h3><%= announcement.user.first_name %> | <%= announcement.body %></h3>
+          <% if current_user.try(:admin?) && current_user == announcement.user %>
+          <%= link_to 'Edit', edit_announcement_path(announcement) %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     </div>
 
 </div>
