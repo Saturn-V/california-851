@@ -1,18 +1,32 @@
-<!-- Home/Banner -->
-<div class="nav">
+<!-- Importsl
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<ul>
   <div class="container">
-
-    <%= link_to '851 California', root_path, :class => 'logo' %>
+    <li>
+      <a href="<%= root_path %>" class="logo">
+        851
+        <span>California</span>
+      </a>
+    </li>
 
     <% if !user_signed_in? %>
-    <%= link_to 'Log In', new_user_session_path %>
+    <li class="login">
+      <%= link_to 'Log In', new_user_session_path %>
+    </li>
+    <% else %>
+    <li class="dropdown account">
+      <a href="javascript:void(0)" class="dropbtn">
+        <i class="fa fa-user-o"></i>
+        <%= current_user.first_name %>
+      </a>
+      <div class="dropdown-content">
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+      </div>
+    </li>
+    <li class="create">
+      <%= link_to "Create Issue", new_issue_path %>
+    </li>
     <% end %>
-
-    <% if user_signed_in? %>
-    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-    <%= current_user.first_name %>
-    <% end %>
-
 
   </div>
-</div>
+</ul>

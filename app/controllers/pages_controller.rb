@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @issues = Issue.all
+    @issues = Issue.all.reverse
     @announcements = Announcement.all
   end
 end

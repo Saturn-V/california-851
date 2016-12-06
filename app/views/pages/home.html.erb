@@ -2,16 +2,21 @@
 
     <div class="six columns">
       <h1>Issues</h1>
-      <%= link_to "Create Issue", new_issue_path, :class => 'button button-primary' %>
 
       <% @issues.each do |issue| %>
       <div class="row">
         <div class="twelve columns">
-          <h6><%= issue.user.first_name %></h6>
+
+          <div class="header">
+            <h3><%= issue.user.first_name %></h3>
+            <% if current_user.try(:admin?) || current_user == issue.user %>
+            <%= link_to 'Edit', edit_issue_path(issue) %>
+            <% end %>
+          </div>
+
+          <span><%= time_ago_in_words(issue.created_at) %> ago</span>
+
           <h3><%= link_to issue.title, issue %></h3>
-          <% if current_user.try(:admin?) || current_user == issue.user %>
-          <%= link_to 'Edit', edit_issue_path(issue) %>
-          <% end %>
         </div>
       </div>
       <% end %>
