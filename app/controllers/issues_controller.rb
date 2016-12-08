@@ -3,6 +3,11 @@ class IssuesController < ApplicationController
   before_action :authorize, except: [:show]
   before_action :authorize_owner, only: [:edit, :update]
 
+  def index
+    @open_issues = Issue.where(resolved: false)
+    @closed_issues = Issue.where(resolved: true)
+  end
+
   def show
     @issue = Issue.find(params[:id])
   end
@@ -42,11 +47,11 @@ class IssuesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def issue_params
-    params.require(:issue).permit(:title, :description)
+    params.require(:issue).permit(:title, :description, :resolved)
   end
 
   def authorize_owner
     @issue = Issue.find(params[:id])
-    redirect_to root_path unless current_user == @issue.user
+    redirect_to root_path unless current_user == @issue.user || current_user.admin == true
   end
 end

@@ -1,2 +1,8 @@
-<h1><%= @issue.title %></h1>
-<h3><%= @issue.description %></h3>
+<div class="row home">
+  <div class="twelve columns">
+    <h1><%= @issue.title %></h1>
+     <span>Posted by <%= current_user.first_name %> <%= time_ago_in_words(@issue.created_at) %> ago</span>
+
+    <h3><%= @issue.description %></h3>
+  </div>
+</div>

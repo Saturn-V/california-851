@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :pages, only: [:landing, :home]
 
-  resources :issues, only: [:show, :new, :create, :edit, :update]
+  resources :issues, only: [:index, :show, :new, :create, :edit, :update]
 
   resources :announcements, only: [:new, :create, :edit, :update]
 

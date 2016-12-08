@@ -10,22 +10,27 @@
     </li>
 
     <% if !user_signed_in? %>
-    <li class="login">
-      <%= link_to 'Log In', new_user_session_path %>
-    </li>
-    <% else %>
-    <li class="dropdown account">
-      <a href="javascript:void(0)" class="dropbtn">
-        <i class="fa fa-user-o"></i>
-        <%= current_user.first_name %>
-      </a>
-      <div class="dropdown-content">
-        <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-      </div>
-    </li>
-    <li class="create">
-      <%= link_to "Create Issue", new_issue_path %>
-    </li>
+      <li class="login">
+        <%= link_to 'Log In', new_user_session_path %>
+      </li>
+      <% else %>
+      <li class="dropdown account">
+        <a href="javascript:void(0)" class="dropbtn">
+          <i class="fa fa-user-o"></i>
+          <%= current_user.first_name %>
+        </a>
+        <div class="dropdown-content">
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+        </div>
+      </li>
+      <li id="right">
+        <%= link_to "Create Issue", new_issue_path %>
+      </li>
+      <% if current_user.try(:admin?) %>
+        <li id="right">
+          <%= link_to "All Issues", issues_path %>
+        </li>
+      <% end %>
     <% end %>
 
   </div>

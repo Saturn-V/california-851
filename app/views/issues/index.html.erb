@@ -1,10 +1,9 @@
 <div class="row home">
 
     <div class="six columns">
-      <h1>Issues</h1>
+      <h1>Unresolved Issues</h1>
 
-      <% @issues.each do |issue| %>
-      <% if !issue.resolved %>
+      <% @open_issues.each do |issue| %>
       <div class="row">
         <div class="twelve columns">
 
@@ -16,7 +15,7 @@
           <div class="details">
             <% if current_user.try(:admin?) || current_user == issue.user %>
             <%= link_to 'Edit', edit_issue_path(issue) %>
-              <% if !issue.resolved && current_user.try(:admin?) %>
+              <% if current_user.try(:admin?) %>
                 <%= form_for issue do |f| %>
                   <%= f.hidden_field :resolved, value: true %>
                   <%= f.submit 'Resolve', :class => 'action-button' %>
@@ -28,32 +27,28 @@
         </div>
       </div>
       <% end %>
-      <% end %>
     </div>
 
     <div class="six columns">
-      <h1>Announcements</h1>
+      <h1>Resolved Issues</h1>
 
-      <% if current_user.try(:admin?) %>
-      <%= link_to "Create Announcement", new_announcement_path, :class => 'button button-primary' %>
-      <% end %>
-
-      <% @announcements.each do |announcement| %>
+      <% @closed_issues.each do |issue| %>
       <div class="row">
         <div class="twelve columns">
 
-          <span>Posted <%= time_ago_in_words(announcement.created_at) %> ago</span>
 
-          <h4><%= announcement.body %></h4>
+          <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
+
+          <h4><%= link_to issue.title, issue %></h4>
+
           <div class="details">
-            <span>By <%= announcement.user.first_name %></span>
-            <% if current_user.try(:admin?) && current_user == announcement.user %>
-            <%= link_to 'Edit', edit_announcement_path(announcement) %>
+            <% if current_user.try(:admin?) || current_user == issue.user %>
+            <%= link_to 'Edit', edit_issue_path(issue) %>
             <% end %>
           </div>
+
         </div>
       </div>
       <% end %>
     </div>
-
 </div>
