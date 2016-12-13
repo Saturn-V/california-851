@@ -1,0 +1,12 @@
+<h1>Edit Update</h1>
+
+<h3>
+  <strong>Update Body:</strong>
+  <%= @update.body %>
+</h3>
+
+<%= form_for [@issue, @update] do |f| %>
+<%= f.label :body %>
+<%= f.text_field :body, :class => 'u-full-width'%>
+<%= f.submit 'Update', :class => 'button-primary' %>
+<% end %>

@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
 
   before_action :authorize, except: [:show]
-  before_action :authorize_owner, only: [:edit, :update]
+  before_action :authorize_owner, only: [:edit, :update, :destroy]
 
   def index
     @open_issues = Issue.where(resolved: false)
@@ -10,6 +10,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    @updates = @issue.updates.all
   end
 
   def new
@@ -20,7 +21,7 @@ class IssuesController < ApplicationController
     @issue = current_user.issues.build(issue_params)
     if @issue.save
       flash[:success] = 'Issue Created'
-      redirect_to root_path
+      redirect_to issue_path(@issue)
     else
       redirect_to :back
       flash[:error] = 'Issue failed to be created'
@@ -35,7 +36,7 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
 
     if @issue.update_attributes(issue_params)
-      redirect_to root_path
+      redirect_to issue_path(@issue)
       flash[:success] = "Issue Updated"
     else
       redirect_to :back
@@ -43,11 +44,19 @@ class IssuesController < ApplicationController
     end
   end
 
+  def destroy
+      @issue = Issue.find(params[:id])
+      if @issue.destroy
+        flash[:success] = "Issue deleted!"
+        redirect_to root_path
+      end
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def issue_params
-    params.require(:issue).permit(:title, :description, :resolved)
+    params.require(:issue).permit(:title, :description, :received, :progressing, :resolved)
   end
 
   def authorize_owner

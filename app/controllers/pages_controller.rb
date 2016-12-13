@@ -6,7 +6,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    @issues = Issue.all.reverse
+    @issues_recent = Issue.all.reverse
+    @issues_oldest = Issue.all
     @announcements = Announcement.all
   end
 end

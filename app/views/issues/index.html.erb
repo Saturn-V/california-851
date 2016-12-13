@@ -1,54 +1,68 @@
-<div class="row home">
+<div class="row">
 
-    <div class="six columns">
-      <h1>Unresolved Issues</h1>
+  <div class="six columns issues">
 
-      <% @open_issues.each do |issue| %>
+    <h4 class="title-box">Unresolved Issues</h4>
+
+    <% @open_issues.each do |issue| %>
+
       <div class="row">
-        <div class="twelve columns">
+        <div class="twelve columns box">
+          <h5><%= link_to issue.title, issue %></h5>
+          <span class="text-inline">
 
+            <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
 
-          <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
-
-          <h4><%= link_to issue.title, issue %></h4>
-
-          <div class="details">
             <% if current_user.try(:admin?) || current_user == issue.user %>
-            <%= link_to 'Edit', edit_issue_path(issue) %>
+
+              <%= link_to 'Edit', edit_issue_path(issue) %>
+
               <% if current_user.try(:admin?) %>
+
                 <%= form_for issue do |f| %>
+
                   <%= f.hidden_field :resolved, value: true %>
                   <%= f.submit 'Resolve', :class => 'action-button' %>
+
                 <% end %>
+
               <% end %>
-            <% end %>
-          </div>
 
+            <% end %>
+
+          </span>
         </div>
       </div>
-      <% end %>
-    </div>
 
-    <div class="six columns">
-      <h1>Resolved Issues</h1>
+    <% end %>
 
-      <% @closed_issues.each do |issue| %>
+  </div>
+
+  <div class="six columns issues">
+
+    <h4 class="title-box">Resolved Issues</h4>
+
+    <% @closed_issues.each do |issue| %>
+
       <div class="row">
-        <div class="twelve columns">
+        <div class="twelve columns box">
+          <h5><%= link_to issue.title, issue %></h5>
+          <div class="text-inline">
 
+            <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
 
-          <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
-
-          <h4><%= link_to issue.title, issue %></h4>
-
-          <div class="details">
             <% if current_user.try(:admin?) || current_user == issue.user %>
-            <%= link_to 'Edit', edit_issue_path(issue) %>
-            <% end %>
-          </div>
 
+              <%= link_to 'Edit', edit_issue_path(issue) %>
+
+            <% end %>
+
+          </div>
         </div>
       </div>
-      <% end %>
-    </div>
+
+    <% end %>
+
+  </div>
+
 </div>

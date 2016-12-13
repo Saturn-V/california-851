@@ -2,12 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$primary-color: #f2f2f2;
+$primary-color: #F9A825;
+$primary-color-rgba: rgba(242, 242, 242, .75);
 $text-icon-color: #212121;
 $text-yellow: #f9a825;
 $text-off-white: #f2f2f2;
 $background-blue: #0277bd;
 
+/* Landing Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .landing-phrase {
   position: relative;
   bottom: 0;
@@ -15,107 +18,22 @@ $background-blue: #0277bd;
 
 .landing-phrase > h1 {
     font-weight: 400;
-    color: $text-yellow;
+    color: text-off-white;
+    strong {
+        font-weight: 200;
+    }
 }
 
-.landing-phrase > h1 > strong {
-    font-weight: 200;
-    color: $text-yellow;
-}
-
-.landing-phrase > h1.phrase {
-    font-weight: 400;
-    color: white;
-}
-
-/* Login
+/* Home Page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.login-container {
-	position: absolute;
-    height: 70%;
-    width: 40%;
-	top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: $primary-color;
-    opacity: 0.8;
+div.announcements {
+  height: calc(100vh - 52px - 4rem);
+  background-color: $primary-color-rgba;
+  color: $text-icon-color;
+  padding: 2rem;
+  border-radius: 6px;
 }
 
-.login-title {
-    position: relative;
-	left: 50%;
-	transform: translate(-50%, 0%);
-    color: $text-icon-color;
-    font-weight: 400;
-    font-size: 80;
-}
-
-.input-field {
-	position: relative;
-    margin-top: 5rem !important;
-}
-
-.username-input {
-    font-weight: 300;
-    font-size: 40px;
-    color: $text-icon-color;
-}
-
-.username-label {
-    font-size: 40px;
-    font-weight: 300;
-}
-
-.password-input {
-    font-weight: 300;
-    font-size: 40px;
-    color: $text-icon-color;
-}
-
-.password-label {
-    font-size: 40px;
-    font-weight: 300;
-}
-
-.submit-button {
-	position: relative;
-    float: right;
-    color: $text-icon-color;
-    font-size: 1em;
-    font-weight: 300;
-    width: 25%;
-}
-
-.not-reg-button {
-	position: relative;
-    color: $text-icon-color;
-    font-size: 1em;
-    font-weight: 300;
-    width: 50%;
-}
-
-.forgot-button {
-	position: relative;
-    color: $text-icon-color;
-    font-size: 1em;
-    font-weight: 300;
-    width: 50%;
-}
-
-//Home page
-.home {
-  margin-bottom: 4%;
-}
-
-div.home h4 {
-  margin: 0;
-}
-div.details > * {
-  display: inline-block;
-  margin-bottom: 10%;
-}
-
-.action-button {
-  border-width: 0 !important;
-  margin: 0;
+div.issues {
+  color: $text-icon-color;
 }

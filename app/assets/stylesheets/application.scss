@@ -39,7 +39,8 @@
 
  /* Legend
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
- $primary-color: #f2f2f2;
+ $primary-color: #F9A825;
+ $primary-box-color: rgba(242, 242, 242, .75);
  $text-icon-color: #212121;
  $text-yellow: #f9a825;
  $text-off-white: #f2f2f2;
@@ -47,10 +48,15 @@
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+  color: $text-icon-color;
+}
+
 body {
   min-height: 100vh;
 	width: 100%;
   font-size: 20px;
+  color: $text-icon-color;
   background-image: url("../assets/cover.jpg"); // Setting background splash image
   background-position: bottom;
   background-size: cover;
@@ -59,19 +65,78 @@ body {
 }
 
 a {
+  color: $text-icon-color !important;
   text-decoration: none;
+}
+
+.row {
+  color: $text-icon-color;
+}
+
+#content {
+  position: relative;
+  margin-top: calc(52px + 2rem);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-inline > * {
+  display: inline-block;
+  margin: 0;
 }
 
 .container {
   color: $text-off-white;
 }
 
-#content {
-  margin-top: 60px;
+.title-box {
+  background-color: $primary-box-color;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 6px;
 }
+
+.box {
+  color: $text-icon-color;
+  background-color: $primary-box-color;
+  padding: 2rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.box h4 {
+  margin: 0;
+}
+
+.box h1 {
+  margin: 0;
+}
+
+.box-within {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.box-within ~ .box-within {
+  margin-top: 0;
+}
+
+.no-margin > * {
+  margin: 0 !important;
+}
+
+
+
 
 ul {
   overflow: visible !important;
+}
+
+.action-button {
+  border-width: 0 !important;
+  margin: 0 !important;
 }
 
 /* Dropdown
@@ -119,18 +184,18 @@ li a, .dropbtn {
 /* Nav Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-li.login {
+ul#nav li.login {
   float: right;
-  // font-size: 1.5em;
+  // font-size: 1em !important;
   color: $text-off-white;
 }
 
-.account {
+ul#nav .account {
   float: right;
   // box-sizing: border-box;
 }
 
-ul {
+ul#nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -142,12 +207,13 @@ ul {
     z-index: 10;
 }
 
-li {
+ul#nav li {
     float: left;
     margin-bottom: 0 !important;
+    // font-size: 1.5em !important;
 }
 
-li a {
+ul#nav li a {
     display: inline-block;
     color: white;
     text-align: center;
@@ -155,14 +221,14 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+ul#nav li a:hover {
     background-color: rgba(0, 0 , 0, 0.75);
     color: rgb(255, 255, 255);
 }
 
-li a.logo:hover { background-color: rgba(0, 0, 0, 0); }
+ul#nav li a.logo:hover { background-color: rgba(0, 0, 0, 0); }
 
-li#right {
+ul#nav li#right {
   float: right;
 }
 
@@ -205,6 +271,80 @@ footer {
     width: 100%;
     color: $text-off-white;
     background-color: $text-yellow;
+}
+
+/* Login
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.login-container {
+	position: absolute;
+    height: 70%;
+    width: 40%;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $primary-color;
+    opacity: 0.8;
+}
+
+.login-title {
+    position: relative;
+	left: 50%;
+	transform: translate(-50%, 0%);
+    color: $text-icon-color;
+    font-weight: 400;
+    font-size: 80;
+}
+
+.input-field {
+	position: relative;
+    margin-top: 5rem !important;
+}
+
+.username-input {
+    font-weight: 300;
+    font-size: 40px;
+    color: $text-icon-color;
+}
+
+.username-label {
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.password-input {
+    font-weight: 300;
+    font-size: 40px;
+    color: $text-icon-color;
+}
+
+.password-label {
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.submit-button {
+	position: relative;
+    float: right;
+    color: $text-icon-color;
+    font-size: 1em;
+    font-weight: 300;
+    width: 25%;
+}
+
+.not-reg-button {
+	position: relative;
+    color: $text-icon-color;
+    font-size: 1em;
+    font-weight: 300;
+    width: 50%;
+}
+
+.forgot-button {
+	position: relative;
+    color: $text-icon-color;
+    font-size: 1em;
+    font-weight: 300;
+    width: 50%;
 }
 
 

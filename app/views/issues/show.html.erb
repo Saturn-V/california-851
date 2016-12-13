@@ -1,8 +1,90 @@
-<div class="row home">
-  <div class="twelve columns">
-    <h1><%= @issue.title %></h1>
-     <span>Posted by <%= current_user.first_name %> <%= time_ago_in_words(@issue.created_at) %> ago</span>
+<div class="row">
 
-    <h3><%= @issue.description %></h3>
+  <div class="twelve columns box">
+    <span class="text-inline">
+      <h3><%= @issue.title %></h3>
+      <span>Posted by <%= @issue.user.first_name %> <%= time_ago_in_words(@issue.created_at) %> ago</span>
+    </span>
+    <span class="description"><%= @issue.description %></span>
   </div>
+
+</div>
+
+<div class="row">
+
+  <div class="eight columns">
+    <h3 class="title-box">Updates</h3>
+
+    <% if current_user.try(:admin?) %>
+
+      <div class="box text-inline text-center">
+        <%= link_to "Create Update", new_issue_update_path(@issue) %>
+
+        <% if @issue.updates.length > 0 && !@issue.resolved %>
+          <%= form_for @issue do |f| %>
+
+            <%= f.hidden_field :resolved, value: true %>
+            <%= f.submit 'Resolve', :class => 'action-button' %>
+
+          <% end %>
+        <% end %>
+      </div>
+
+    <% end %>
+
+    <% @updates.each do |update| %>
+
+      <div class="row">
+        <div class="twelve columns updates">
+          <h4><%= update.body %></h4>
+          <div class="text-inline">
+
+            <span>Posted by <%= update.user.first_name %> <%= time_ago_in_words(update.created_at) %> ago</span>
+
+            <% if current_user.try(:admin?) || current_user == update.user %>
+
+              <%= link_to 'Edit', edit_issue_update_path(@issue, update) %>
+
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="four columns box">
+    <h3>Progress</h3>
+
+    <!-- <% if @issue.received %> -->
+    <h1>-RECEIVED</h1>
+    <!-- <% else %> -->
+    <!-- <h1>NOT RECEIVED</h1> -->
+    <!-- <% end %> -->
+    <ul id="progress">
+      <li>
+        <% if @issue.updates.length > 0 %>
+          <i class="fa fa-check-circle-o"> | In Progress</i>
+        <% else %>
+          <i class="fa fa-exclamation-circle"> | No Progress</i>
+        <% end %>
+      </li>
+
+      <!-- <li>
+      <span>_<i class="fa fa-ellipsis-v"></i></span>
+      </li> -->
+
+      <li>
+        <% if @issue.resolved %>
+          <i class="fa fa-check-circle-o"> | Resolved</i>
+        <% else %>
+          <i class="fa fa-exclamation-circle"> | No Resolution</i>
+        <% end %>
+      </li>
+    </ul>
+
+  </div>
+
 </div>

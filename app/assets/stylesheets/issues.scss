@@ -2,22 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$primary-color-hex: #f2f2f2;
+$primary-color: #F9A825;
+// $primary-color-rgba: rgba(255, 250, 228, .75);
 $primary-color-rgba: rgba(242, 242, 242, .75);
 $text-icon-color: #212121;
+// $text-icon-color: white;
 $text-yellow: #f9a825;
+$text-off-white: #f2f2f2;
 $background-blue: #0277bd;
 
-div.home > * {
+// Show
+div.updates {
   background-color: $primary-color-rgba;
-  margin-top: 4%;
-  padding: 4%;
+  padding: 3%;
   border-radius: 6px;
   color: $text-icon-color;
 }
 
-div.home div:first-child {
-
+ul#progress li {
+  list-style-type: none !important;
+  font-size: 1.5em;
+  margin-bottom: 2rem;
 }
 
-div.home div:last-child {}
+.description {
+  display: block;
+  font-size: 2.25em;
+}

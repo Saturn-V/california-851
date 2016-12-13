@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207215528) do
+ActiveRecord::Schema.define(version: 20161212173308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,18 @@ ActiveRecord::Schema.define(version: 20161207215528) do
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.boolean  "resolved",    default: false
+    t.boolean  "received",    default: false
     t.index ["user_id"], name: "index_issues_on_user_id", using: :btree
+  end
+
+  create_table "updates", force: :cascade do |t|
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "issue_id"
+    t.index ["issue_id"], name: "index_updates_on_issue_id", using: :btree
+    t.index ["user_id"], name: "index_updates_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,4 +66,6 @@ ActiveRecord::Schema.define(version: 20161207215528) do
 
   add_foreign_key "announcements", "users"
   add_foreign_key "issues", "users"
+  add_foreign_key "updates", "issues"
+  add_foreign_key "updates", "users"
 end

@@ -1,0 +1,69 @@
+<div class="row">
+
+  <!-- Issues View
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="five columns issues">
+
+    <h4 class="title-box">Issues</h4>
+
+    <% @issues_recent.each do |issue| %>
+
+      <% if !issue.resolved %>
+
+        <div class="row">
+          <div class="twelve columns box">
+            <h5><%= link_to issue.title, issue %></h5>
+            <div class="text-inline">
+              <span>Posted by <%= issue.user.first_name %> <%= time_ago_in_words(issue.created_at) %> ago</span>
+              <% if current_user.try(:admin?) || current_user == issue.user %>
+
+                <%= link_to 'Edit', edit_issue_path(issue) %>
+
+                <% if !issue.resolved && current_user.try(:admin?) %>
+
+                  <%= form_for issue do |f| %>
+                    <%= f.hidden_field :resolved, value: true %>
+                    <%= f.submit 'Resolve', :class => 'action-button' %>
+                  <% end %>
+
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+  <!-- Announcements View
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="seven columns announcements">
+
+    <h4 class="text-center">Announcements</h4>
+
+    <% @announcements.each do |announcement| %>
+
+      <div class="row">
+        <div class="twelve columns box-within">
+          <h5><%= announcement.body %></h5>
+          <div class="text-inline">
+            <span>Posted by <%= announcement.user.first_name %> <%= time_ago_in_words(announcement.created_at) %> ago</span>
+            <% if current_user.try(:admin?) && current_user == announcement.user %>
+
+              <%= link_to 'Edit', edit_announcement_path(announcement) %>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>

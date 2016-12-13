@@ -1,0 +1,6 @@
+<h1>Create an Update</h1>
+<%= form_for [@issue, @update] do |f| %>
+<%= f.label :body %>
+<%= f.text_field :body, :class => 'u-full-width' %>
+<%= f.submit 'Create', :class => 'button-primary' %>
+<% end %>
