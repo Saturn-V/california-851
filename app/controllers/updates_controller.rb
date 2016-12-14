@@ -1,8 +1,7 @@
-class UpdatesController < ApplicationController
+ class UpdatesController < ApplicationController
 
   before_action :authorize
   before_action :authorize_admin
-  before_action :authorize_owner, only: [:edit, :update]
 
   def new
     @issue = Issue.find(params[:issue_id])
@@ -46,10 +45,5 @@ class UpdatesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def update_params
     params.require(:update).permit(:body)
-  end
-
-  def authorize_owner
-    @update = Update.find(params[:id])
-    redirect_to root_path unless current_user.admin == true
   end
 end

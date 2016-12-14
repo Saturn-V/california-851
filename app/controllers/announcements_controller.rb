@@ -1,8 +1,8 @@
 class AnnouncementsController < ApplicationController
 
   before_action :authorize
-  before_action :authorize_admin
   before_action :authorize_owner, only: [:edit, :update]
+  before_action :authorize_admin
 
   def new
     @announcement = current_user.announcements.build

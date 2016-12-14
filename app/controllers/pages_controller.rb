@@ -10,4 +10,5 @@ class PagesController < ApplicationController
     @issues_oldest = Issue.all
     @announcements = Announcement.all
   end
+
 end

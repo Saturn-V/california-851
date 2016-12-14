@@ -7,9 +7,9 @@ class User < ApplicationRecord
   attr_accessor :house_code
   validate :house_code_valid, :on => :create
 
-  has_many :announcements
-  has_many :issues
-  has_many :updates
+  has_many :announcements, :dependent => :destroy
+  has_many :issues, :dependent => :destroy
+  has_many :updates, :dependent => :destroy
 
   def house_code_valid
     unless self.house_code == "851California"

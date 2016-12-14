@@ -1,7 +1,8 @@
 class IssuesController < ApplicationController
 
   before_action :authorize, except: [:show]
-  before_action :authorize_owner, only: [:edit, :update, :destroy]
+  before_action :authorize_owner_admin, only: [:edit, :update, :destroy]
+
 
   def index
     @open_issues = Issue.where(resolved: false)
@@ -59,7 +60,7 @@ class IssuesController < ApplicationController
     params.require(:issue).permit(:title, :description, :received, :progressing, :resolved)
   end
 
-  def authorize_owner
+  def authorize_owner_admin
     @issue = Issue.find(params[:id])
     redirect_to root_path unless current_user == @issue.user || current_user.admin == true
   end

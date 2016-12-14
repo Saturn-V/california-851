@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'pages#landing'
 
+  resources :users, only: [:index, :show, :destroy]
+
   resources :pages, only: [:landing, :home]
 
   resources :issues, only: [:index, :show, :new, :create, :edit, :update, :destroy] do

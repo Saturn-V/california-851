@@ -1,0 +1,16 @@
+<% @users.each do |user| %>
+  <% if user != current_user %>
+    <div class="row">
+      <div class="four columns box">
+        <%= user.first_name %><br/>
+        <%= user.last_name %><br/>
+        <%= user.email %><br/>
+        <%= user.created_at %><br/>
+        <% if current_user.try(:admin?) %>
+          <%= link_to "Destroy User", user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<br/>
