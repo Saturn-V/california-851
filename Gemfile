@@ -45,16 +45,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # Heroku related things
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails_serve_static_assets', github: 'heroku/rails_serve_static_assets'
+  # Use BetterErrors for better errors
+  gem 'better_errors'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Use BetterErrors for better errors
-gem 'better_errors'
 # Use Skeleton framework for front-end
 gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 # use Font Awesome
