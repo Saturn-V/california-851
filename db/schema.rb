@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213170038) do
+ActiveRecord::Schema.define(version: 20161213063935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,14 +21,6 @@ ActiveRecord::Schema.define(version: 20161213170038) do
     t.string   "body"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_announcements_on_user_id", using: :btree
-  end
-
-  create_table "houses", force: :cascade do |t|
-    t.string   "house_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_houses_on_user_id", using: :btree
   end
 
   create_table "issues", force: :cascade do |t|
@@ -74,7 +66,6 @@ ActiveRecord::Schema.define(version: 20161213170038) do
   end
 
   add_foreign_key "announcements", "users"
-  add_foreign_key "houses", "users"
   add_foreign_key "issues", "users"
   add_foreign_key "updates", "issues"
   add_foreign_key "updates", "users"
